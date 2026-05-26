@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+==========================================================================
+【AI HANDOVER NOTE】
+1. DESIGN PHILOSOPHY:
+   - High-conversion landing page with Neo-futurism meets Financial Empowerment aesthetic
+   - Visual strategy: Cyber-luxury with neon accents, creating urgency and aspiration
+   - Dark-dominant palette with electric green (#00ff88) as primary conversion driver
+   - Glassmorphism 2.0 with glow effects for premium feel and trust-building
+   - Design rationale: Brazilian digital product market demands bold, modern, money-focused visuals that convey opportunity and technological sophistication
+
+2. TYPOGRAPHY:
+   - Inter: Modern geometric sans with excellent Portuguese diacritics support, conveys professionalism and tech-forward brand identity. Weight range 400-900 enables strong hierarchical contrast for CTAs and headlines
+   - JetBrains Mono: Used for financial data displays, countdown timers, pricing tables, and dashboard mockups. Monospace reinforces precision and data credibility
+
+3. COLOR SYSTEM:
+   - Brand primary (electric green H:150): Represents money, growth, opportunity. Maps to --primary for CTAs and conversion points
+   - --accent (neon cyan H:180): Secondary attention driver for urgency elements, popups, limited-time offers
+   - --ring uses brand green for focus states, reinforcing conversion psychology
+   - Dark mode optimized as primary theme: background at L:0.08 creates premium, immersive experience
+   - Gold accents via chart_4 (H:50) for premium badges, guarantees, security seals
+   - Destructive (red H:10) for countdown urgency, warning elements
+   - Success (green H:150) aligns with brand for testimonial highlights, result metrics
+
+4. USAGE GUIDE:
+   - Layout: Full-width sections with centered max-width containers (1280px)
+   - Hero section: Use backdrop-blur on card overlays with border glow effect (border-primary with shadow-lg shadow-primary/20)
+   - Apply glow effects: box-shadow with primary/accent colors at 30-50% opacity for neon aesthetic
+   - Countdown timers: Use mono font with accent color and pulsing animation
+   - CTA buttons: primary background with ring-2 ring-primary, add hover:shadow-2xl hover:shadow-primary/40 for depth
+   - Dashboard mockups: Use muted backgrounds with subtle grid patterns, accent borders for data visualization
+   - Testimonial cards: card background with border-l-4 border-primary for credibility emphasis
+   - Pricing tables: Use gradient backgrounds (from-background to-muted) with primary highlights on recommended plans
+   - Security badges: Gold (chart_4) with subtle glow for trust signals
+   - Popup urgency: accent background with destructive accents for scarcity messaging
+   - Financial graphics: Use chart colors (chart_1 through chart_5) for multi-metric dashboards
+   - Mobile-first: Ensure touch targets 44px minimum, reduce glow intensity on mobile for performance
+==========================================================================
+*/
+
+:root {
+  /* Typography */
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: JetBrains Mono, 'Courier New', monospace;
+  
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Core UI Tokens */
+  --background: oklch(0.98 0.005 150);
+  --foreground: oklch(0.12 0.02 150);
+  --card: oklch(0.99 0.003 150);
+  --card-foreground: oklch(0.12 0.02 150);
+  --popover: oklch(0.99 0.003 150);
+  --popover-foreground: oklch(0.12 0.02 150);
+  --primary: oklch(0.55 0.22 150);
+  --primary-foreground: oklch(0.98 0.005 150);
+  --secondary: oklch(0.92 0.01 150);
+  --secondary-foreground: oklch(0.18 0.02 150);
+  --muted: oklch(0.94 0.008 150);
+  --muted-foreground: oklch(0.45 0.015 150);
+  --accent: oklch(0.58 0.20 180);
+  --accent-foreground: oklch(0.98 0.005 180);
+  --destructive: oklch(0.55 0.22 10);
+  --destructive-foreground: oklch(0.98 0.005 10);
+  --border: oklch(0.88 0.01 150);
+  --input: oklch(0.88 0.01 150);
+  --ring: oklch(0.55 0.22 150);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.55 0.22 150);
+  --chart-2: oklch(0.58 0.20 180);
+  --chart-3: oklch(0.50 0.18 270);
+  --chart-4: oklch(0.60 0.18 50);
+  --chart-5: oklch(0.52 0.20 320);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.96 0.006 150);
+  --sidebar-foreground: oklch(0.18 0.02 150);
+  --sidebar-primary: oklch(0.55 0.22 150);
+  --sidebar-primary-foreground: oklch(0.98 0.005 150);
+  --sidebar-accent: oklch(0.92 0.01 150);
+  --sidebar-accent-foreground: oklch(0.18 0.02 150);
+  --sidebar-border: oklch(0.88 0.01 150);
+  --sidebar-ring: oklch(0.55 0.22 150);
+}
+
+.dark {
+  --background: oklch(0.08 0.015 150);
+  --foreground: oklch(0.95 0.008 150);
+  --card: oklch(0.12 0.018 150);
+  --card-foreground: oklch(0.95 0.008 150);
+  --popover: oklch(0.10 0.016 150);
+  --popover-foreground: oklch(0.95 0.008 150);
+  --primary: oklch(0.65 0.25 150);
+  --primary-foreground: oklch(0.08 0.015 150);
+  --secondary: oklch(0.18 0.02 150);
+  --secondary-foreground: oklch(0.95 0.008 150);
+  --muted: oklch(0.15 0.018 150);
+  --muted-foreground: oklch(0.65 0.015 150);
+  --accent: oklch(0.68 0.23 180);
+  --accent-foreground: oklch(0.08 0.015 180);
+  --destructive: oklch(0.60 0.25 10);
+  --destructive-foreground: oklch(0.95 0.008 10);
+  --border: oklch(0.22 0.02 150);
+  --input: oklch(0.22 0.02 150);
+  --ring: oklch(0.65 0.25 150);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.65 0.25 150);
+  --chart-2: oklch(0.68 0.23 180);
+  --chart-3: oklch(0.60 0.22 270);
+  --chart-4: oklch(0.70 0.20 50);
+  --chart-5: oklch(0.62 0.23 320);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.10 0.016 150);
+  --sidebar-foreground: oklch(0.90 0.01 150);
+  --sidebar-primary: oklch(0.65 0.25 150);
+  --sidebar-primary-foreground: oklch(0.08 0.015 150);
+  --sidebar-accent: oklch(0.18 0.02 150);
+  --sidebar-accent-foreground: oklch(0.90 0.01 150);
+  --sidebar-border: oklch(0.22 0.02 150);
+  --sidebar-ring: oklch(0.65 0.25 150);
+}
+
+@theme inline {
+  /* Shadcn Core Mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts Mapping */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mapping */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+  }
+}
